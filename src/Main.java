@@ -6,29 +6,41 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args ) throws IOException {
+
         Scanner myObj = new Scanner(System.in);
         System.out.println("Give file with data");
         String inputFileName = myObj.nextLine();
         FIleReader inputFile = new FIleReader(new File (inputFileName));
-
+        ArrayList<String> tablica = inputFile.read();
         System.out.println("m - Morse, c - Cesar");
         String mode = myObj.nextLine();
 
         System.out.println("Give output file");
         String outputFileName = myObj.nextLine();
         FileSaver outputFile = new FileSaver(outputFileName);
-        ArrayList<String> tablica = inputFile.read();
-        outputFile.saveArray(tablica);
+        if (mode.equals("m")) {
+            Mors morse = new Mors();
 
-        if (mode == "m") {
+            for (int i = 0; i<tablica.size(); i++) {
+                tablica.set(i,  morse.szyfr(tablica.get(i)));
+            }
+            outputFile.saveArray(tablica);
+        }  else if (mode.equals("c")) {
+            Ceasar cezar = new Ceasar();
 
-        }
-        else if (mode == "c") {
-
-        }
-        else {
+            for (int i = 0; i<tablica.size(); i++) {
+                tablica.set(i,  cezar.encrypt(tablica.get(i)));
+            }
+            outputFile.saveArray(tablica);
+        } else {
             System.out.println("error");
         }
+
+
+
+
+
+
 
 
 

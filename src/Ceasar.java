@@ -33,8 +33,8 @@ public class Ceasar {
             }
         }
 
-
-        String result = word.toString();
+        String result = new String(word);
+       // String result = word.toString();
         return result;
     }
 
