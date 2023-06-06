@@ -1,17 +1,17 @@
 
 public class Ceasar {
 
-    private static int pivot;
+    private int pivot;
 
     public void ceasar(){
-        this.pivot = 3;
+        pivot = 3;
     }
 
     public void ceasar(int pivot){
         this.pivot = pivot;
     }
 
-    public static String encrypt(String w){
+    public String encrypt(String w){
 
         char[] word = (w.toCharArray());
         int length = word.length;
